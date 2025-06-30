@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secure Visa Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #login, #main-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    iframe {
+      width: 100%;
+      height: 90vh;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="login">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" /><br><br>
+    <input type="password" id="password" placeholder="Password" /><br><br>
+    <button onclick="login()">Login</button>
+    <p id="error" style="color:red;"></p>
+  </div>
+
+  <div id="main-content" style="display:none;">
+    <h2>Welcome!</h2>
+    <iframe src="https://dev-visa-checker.pantheonsite.io"></iframe>
+  </div>
+
+  <script>
+    const correctUser = "admin";
+    const correctPass = "1234";
+
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+
+      if(user === correctUser && pass === correctPass) {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      } else {
+        document.getElementById('error').textContent = "Invalid credentials!";
+      }
+    }
+  </script>
+</body>
+</html>
